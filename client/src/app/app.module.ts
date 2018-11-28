@@ -1,3 +1,4 @@
+import { PostsService } from './services/posts.service';
 import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -28,7 +29,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, PostsService],
   bootstrap: [AppComponent]
 })
 
