@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  userData={};
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onRegister(){
+    console.log(this.userData);
   }
 
 }
