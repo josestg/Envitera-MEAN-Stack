@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container">
-  <a class="navbar-brand text-white" href="#">Envitera</a>
+  <a class="navbar-brand text-white" href="/">Envitera</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,8 +15,9 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-        <a class="nav-link text-white" routerLink="/login" routerLinkActive="active">Login</a>
-        <a class="nav-link text-white"  routerLink="/register" routerLinkActive="active">Register</a>
+        <a class="nav-link text-white" *ngIf="!_auth.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
+        <a class="nav-link text-white" *ngIf="!_auth.loggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
+        <a class="nav-link text-white" *ngIf="_auth.loggedIn()" (click)="_auth.logoutUser()" >Logout</a>
     </ul>
   </div>
 </div>

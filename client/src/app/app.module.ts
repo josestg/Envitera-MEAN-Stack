@@ -1,3 +1,4 @@
+import { HomeService } from './services/home.service';
 import { AuthGuard } from './auth.guard';
 import { SinglePostComponent } from './components/single-post/single-post.component';
 import { PostsService } from './services/posts.service';
@@ -43,7 +44,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     AppRoutingModule,
     NgFlashMessagesModule.forRoot()
   ],
-  providers: [AuthService, PostsService,AuthGuard,{
+  providers: [AuthService, PostsService,AuthGuard,HomeService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi:true
