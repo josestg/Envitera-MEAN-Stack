@@ -1,4 +1,4 @@
-<form class="container-fluid mt-5">
+<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'password2']" novalidate>
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-8 col-xl-6">
       <div class="row">
@@ -9,25 +9,40 @@
       </div>
       <div class="row align-items-center">
         <div class="col mt-4">
-          <input type="text" class="form-control" placeholder="Your Name" required [(ngModel)]="userData.name" name="name">
+            <input placeholder="Your Name" type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required  />
+            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                <div *ngIf="name.errors.required">Name is required</div>
+            </div>
         </div>
       </div>
       <div class="row align-items-center mt-4">
         <div class="col">
-          <input type="email" class="form-control" placeholder="Email"required [(ngModel)]="userData.email" name="email">
+            <input placeholder="Email" type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required">Email is required</div>
+                <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
         </div>
       </div>
       <div class="row align-items-center mt-4">
         <div class="col">
-          <input type="password" class="form-control" placeholder="Password" required [(ngModel)]="userData.password" name="password">
+            <input placeholder="Password" type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
         </div>
         <div class="col">
-          <input type="password" class="form-control" placeholder="Confirm Password"required [(ngModel)]="userData.password2" name="password2">
+            <input placeholder="Confirm Password " type="password" class="form-control" name="password2" [(ngModel)]="model.password2" #password2="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password2.invalid }" required />
+            <div *ngIf="f.submitted && password2.invalid" class="invalid-feedback">
+                <div *ngIf="password2.errors.required">Confirm Password is required</div>
+                <div *ngIf="password2.errors.mustMatch">Passwords must match</div>
+            </div>
         </div>
       </div>
       <div class="row justify-content-end mt-4">
         <div class="col-4 d-flex justify-content-end">
-          <button class="btn btn-block btn-primary" (click)="onRegister()">Submit</button>
+          <button class="btn btn-block btn-primary" >Submit</button>
         </div>
       </div>
     </div>

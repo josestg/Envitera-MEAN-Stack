@@ -13,6 +13,8 @@ import { PostsComponent } from './components/posts/posts.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
+import { MustMatchDirective } from './helpers/must-match.directive';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RegisterComponent,
     PostsComponent,
     ProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    MustMatchDirective
   ],
   imports: [
     BrowserModule,
