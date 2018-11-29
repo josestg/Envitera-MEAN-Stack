@@ -1,6 +1,7 @@
 import { PostsService } from './../../services/posts.service';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -8,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  posts= [];
-  constructor(private _postservice:PostsService) { }
+  posts;
+  constructor(private _postservice:PostsService){}
+  
 
   ngOnInit() {
     this._postservice.getPosts()
       .subscribe(
-        res => this.posts = res,
+        res => {
+          this.posts = res;          
+          console.log(this.posts)
+        },
         err => console.log(err)
       );
   }

@@ -4,7 +4,7 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-lg-4 col-md-6">
+      <div class="col-lg-4 col-md-6" *ngFor="let post of posts">
         <div class="card h-100">
           <div class="single-post post-style-1">
         
@@ -14,8 +14,8 @@
         
             <div class="blog-info">
         
-              <h4 class="title"><a href="#"><b>How Did Van Gogh's Turbulent Mind Depict One of the Most Complex
-                    Concepts in Physics?</b></a></h4>
+              <h4 class="title"><a routerLink="/posts/{{post._id}}"><b>{{post.title}}</b></a></h4>
+              <p>{{post.text}}</p>
         
               <ul class="post-footer">
                 <li><a href="#"><i class="fa fa-heart"></i>57</a></li>
