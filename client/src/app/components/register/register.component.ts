@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private _auth: AuthService, private router:Router) { }
+  constructor(private _auth: AuthService, private _router:Router) { }
 
   ngOnInit() {
   }
@@ -17,7 +17,10 @@ export class RegisterComponent implements OnInit {
   model: any = {};
 
   onSubmit() {
-   console.log(this.model);
+    this._auth.registerUser(this.model).subscribe(
+      res => this._router.navigate(['login']),
+      err => console.log(err)
+    )
   }
 
 }

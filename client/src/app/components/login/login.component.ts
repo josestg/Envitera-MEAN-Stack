@@ -8,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  userData = {};
+  model: any = {};
   constructor(private _auth:AuthService) { }
 
   ngOnInit() {
   }
 
   onLogin(){
-    this._auth.loginUser(this.userData).subscribe(
+    this._auth.loginUser(this.model).subscribe(
       res => console.log(res),
       err => console.log(err)
     )

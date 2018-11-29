@@ -1,28 +1,35 @@
-
-<form class="container-fluid mt-5">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-        <div class="row">
-          <div class="col text-center">
-            <h1>Login</h1>
-            <p class="text-h3">Login and make your post to public. </p>
-          </div>
+<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+      <div class="row">
+        <div class="col text-center">
+          <h1>Login</h1>
+          <p class="text-h3">Login and make Your post to Public! </p>
         </div>
-        <div class="row justify-content-center mt-4">
-          <div class="col-8">
-            <input type="email" class="form-control" placeholder="Email"required [(ngModel)]="userData.email" name="email">
-          </div>
+      </div>
+      <div class="row align-items-center mt-4">
+        <div class="col">
+            <input placeholder="Email" type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors.required">Email is required</div>
+                <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
         </div>
-        <div class="row justify-content-center mt-4">
-          <div class="col-8">
-            <input type="password" class="form-control" placeholder="Password" required [(ngModel)]="userData.password" name="password">
-          </div>
+      </div>
+      <div class="row align-items-center mt-4">
+        <div class="col">
+            <input placeholder="Password" type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
         </div>
-        <div class="row justify-content-center mt-4">
-          <div class="col-8">
-            <button class="btn btn-block btn-primary" (click)="onLogin()">Login</button>
-          </div>
+      </div>
+      <div class="row justify-content-end mt-4">
+        <div class="col-4 d-flex justify-content-end">
+          <button class="btn btn-block btn-primary" >Submit</button>
         </div>
       </div>
     </div>
-  </form>
+  </div>
+</form>
