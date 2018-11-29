@@ -16,12 +16,16 @@ export class SinglePostComponent implements OnInit {
   comments;
   constructor(private _postservice:PostsService ,
     private _auth:AuthService,private _ar:ActivatedRoute) { 
-    this._ar.params.subscribe(p=> this.param$ = p.id.toString()) 
+    this._ar.params.subscribe(p=> {
+      this.param$ = p.id.toString()
+      console.log(this.param$)
+    }) 
   }
 
   ngOnInit() {
     this._postservice.getPost(this.param$).subscribe(
       res=> {this.post=res;
+        console.log(res);
         this.comments = res.comments;
         this.comments.map(e=> e.date=new Date(e.date.toString()).toDateString())
         this.post.date = new Date(this.post.date.toString()).toDateString()

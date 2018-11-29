@@ -43,9 +43,16 @@ router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
 //  @desc   Get All Post
 //  @access Public
 router.get('/',(req,res)=>{
+    const lg = 200
     Post.find().sort({date:-1})
     .populate('user',['name','avatar'])
-    .then(posts=>res.json(posts))
+    .then(posts=>{
+        for(let i=0;i<posts.length;i++){
+            if(posts[i].text.length>lg)
+                posts[i].text=posts[i].text.substring(0,lg)+'...';
+        }
+        res.json(posts)
+    })
     .catch(err => res.status(404).json(err));
 })
 
@@ -57,11 +64,25 @@ router.get('/:id',(req,res)=>{
     .populate('user',['name','avatar'])
     .then(posts=>{
         posts.views+=1;
-        posts.save();
+        posts.save().then(()=>{
+            res.json(posts)
+        }).catch(err=>res.status(400).json({success:false}))
+        
+    })
+    .catch(err => res.status(404).json({msg:"no post found by given id"}));
+})
+
+//  @route  GET api/posts/:id
+//  @desc   Get Single Post User Id
+//  @access Public
+router.get('/user/:user_id',(req,res)=>{
+    Post.find({user:req.params.user_id})
+    .then(posts=>{
         res.json(posts)
     })
     .catch(err => res.status(404).json({msg:"no post found by given id"}));
 })
+
 
 //  @route  DELETE api/posts/:id
 //  @desc   Delete Single Post by Id
@@ -92,13 +113,13 @@ router.post('/like/:id',passport.authenticate('jwt',{session:false}),(req,res)=>
                 .then(post=>{
                    //check user already liked
                    if(post.likes.filter(like => like.user.toString()=== req.user.id).length > 0){
-                       return res.status(400).json({alreadyliked:"User alrady like this post"});
+                       return res.status(400).json({success:false,alreadyliked:"User alrady like this post"});
                    }
                    // add user id to likes array
                    post.likes.unshift({user:req.user.id});
-                   post.save().then(post=> res.json(post));
+                   post.save().then(post=> res.json({success:true}));
                 })
-                .catch(err=> res.status(404).json({postnotfound:'No post found'}));
+                .catch(err=> res.status(404).json({postnotfound:'No post found, Yaela'}));
         })
 })
 

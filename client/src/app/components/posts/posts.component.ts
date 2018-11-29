@@ -23,6 +23,18 @@ export class PostsComponent implements OnInit {
         err => console.log(err)
       );
   }
+  
+  likePost(id){
+    this._postservice.likePost(id).subscribe(
+      res=>{
+        if(res.success){
+          console.log('LiKED');
+        }
+      },
+      err=>console.log(err)
+    )
+  }
+
 
 
 }

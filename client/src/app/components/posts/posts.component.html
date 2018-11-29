@@ -14,13 +14,15 @@
         
             <div class="blog-info">
         
-              <h4 class="title"><a routerLink="/posts/{{post._id}}"><b>{{post.title}}</b></a></h4>
-              <p>{{post.text}}</p>
+              <h4 class="lead"><a routerLink="/posts/{{post._id}}"><b>{{post.title}}</b></a></h4>
+              <div class="container my-3">
+                <p class="small">{{post.text}}</p>
+              </div>
         
               <ul class="post-footer">
-                <li><a href="#"><i class="fa fa-heart"></i>57</a></li>
-                <li><a href="#"><i class="fa fa-comments"></i>6</a></li>
-                <li><a href="#"><i class="fa fa-eye"></i>138</a></li>
+                <li><button class="btn btn-block btn-light "value="{{post._id}}"  #id (click)="likePost(id.value)"><i class="fa fa-heart"></i>{{post.likes.length}}</button></li>
+                <li><button class="btn btn-block btn-light"><i class="fa fa-comments"></i>{{post.comments.length}}</button></li>
+                <li><button class="btn btn-block btn-light" ><i class="fa fa-eye"></i>{{post.views}}</button></li>
               </ul>
         
             </div><!-- blog-info -->
@@ -31,7 +33,7 @@
     
     </div><!-- row -->
 
-    <a class="load-more-btn" href="#"><b>LOAD MORE</b></a>
+    <a class="load-more-btn" href="#" *ngIf="posts.length>9"><b>LOAD MORE</b></a>
 
   </div><!-- container -->
 </section><!-- section -->
