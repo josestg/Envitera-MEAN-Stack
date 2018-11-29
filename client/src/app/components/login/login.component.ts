@@ -14,17 +14,14 @@ export class LoginComponent implements OnInit {
   constructor(private _auth:AuthService, private _flash:NgFlashMessageService) { }
 
   ngOnInit() {
-    this._flash.showFlashMessage({
-      messages: ["Yah! i'm alive"], 
-      dismissible: true, 
-      timeout: 2000,
-      type: 'danger'
-    });
+
   }
 
-  onLogin(){
+  onSubmit(){
     this._auth.loginUser(this.model).subscribe(
-      res => console.log(res),
+      res => {
+        localStorage.setItem('token',res.token);
+      },
       err => console.log(err)
     )
     
