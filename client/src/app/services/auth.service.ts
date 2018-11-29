@@ -26,4 +26,12 @@ export class AuthService {
   getUserCurrent(){
     return this._http.get<any>(this._current);
   }
+
+  loggedIn(){
+    return !!localStorage.getItem('token');
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
+  }
 }

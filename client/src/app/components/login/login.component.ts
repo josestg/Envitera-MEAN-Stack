@@ -2,6 +2,7 @@ import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 import { NgFlashMessageService } from 'ng-flash-messages';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,9 @@ import { NgFlashMessageService } from 'ng-flash-messages';
 export class LoginComponent implements OnInit {
 
   model: any = {};
-  constructor(private _auth:AuthService, private _flash:NgFlashMessageService) { }
+  constructor(private _auth:AuthService,
+     private _flash:NgFlashMessageService,
+     private _router:Router) { }
 
   ngOnInit() {
 
@@ -21,6 +24,7 @@ export class LoginComponent implements OnInit {
     this._auth.loginUser(this.model).subscribe(
       res => {
         localStorage.setItem('token',res.token);
+        this._router.navigate(['/profile'])
       },
       err => console.log(err)
     )

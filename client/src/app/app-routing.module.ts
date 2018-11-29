@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { SinglePostComponent } from './components/single-post/single-post.component';
 
@@ -27,7 +28,8 @@ const routes: Routes = [
   },
   {
     path:'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'detail',

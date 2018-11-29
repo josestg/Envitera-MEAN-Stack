@@ -1,10 +1,11 @@
+import { AuthGuard } from './auth.guard';
 import { SinglePostComponent } from './components/single-post/single-post.component';
 import { PostsService } from './services/posts.service';
 import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { MustMatchDirective } from './helpers/must-match.directive';
 import { HomeComponent } from './components/home/home.component';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 
 
@@ -41,7 +43,11 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     NgFlashMessagesModule.forRoot()
   ],
-  providers: [AuthService, PostsService],
+  providers: [AuthService, PostsService,AuthGuard,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 
