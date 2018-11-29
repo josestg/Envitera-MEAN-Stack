@@ -15,11 +15,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { MustMatchDirective } from './helpers/must-match.directive';
-import { CardComponent } from './compoments/card/card.component';
-import { CardImgComponent } from './compoments/card-img/card-img.component';
-import { CommentComponent } from './compoments/comment/comment.component';
-import { PostsDetailComponent } from './compoments/posts-detail/posts-detail.component';
-import { PostsListComponent } from './compoments/posts-list/posts-list.component';
 
 
 @NgModule({
@@ -30,12 +25,7 @@ import { PostsListComponent } from './compoments/posts-list/posts-list.component
     PostsComponent,
     ProfileComponent,
     NavbarComponent,
-    MustMatchDirective,
-    CardComponent,
-    CardImgComponent,
-    CommentComponent,
-    PostsDetailComponent,
-    PostsListComponent
+    MustMatchDirective
   ],
   imports: [
     BrowserModule,
