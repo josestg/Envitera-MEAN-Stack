@@ -8,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  userData={};
-  constructor(private _auth : AuthService) { }
+  userData = {};
+
+  constructor(private _auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  onRegister(){
+  onRegister() {
     this._auth.registerUser(this.userData).subscribe(
       res => console.log(res),
       err => console.log(err)
