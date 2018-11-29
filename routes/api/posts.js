@@ -55,7 +55,11 @@ router.get('/',(req,res)=>{
 router.get('/:id',(req,res)=>{
     Post.findById(req.params.id)
     .populate('user',['name','avatar'])
-    .then(posts=>res.json(posts))
+    .then(posts=>{
+        posts.views+=1;
+        posts.save();
+        res.json(posts)
+    })
     .catch(err => res.status(404).json({msg:"no post found by given id"}));
 })
 
