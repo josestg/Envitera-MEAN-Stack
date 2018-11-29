@@ -16,6 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { MustMatchDirective } from './helpers/must-match.directive';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -29,7 +30,8 @@ import { MustMatchDirective } from './helpers/must-match.directive';
     ProfileComponent,
     NavbarComponent,
     MustMatchDirective,
-    SinglePostComponent
+    SinglePostComponent,
+    HomeComponent
   
   ],
   imports: [

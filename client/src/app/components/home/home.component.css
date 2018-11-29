@@ -1,0 +1,114 @@
+section{
+    height: 100vh;
+
+}
+.hero{
+    position: relative;
+    background-image: url(../../../assets/img/hero.jpg);
+    background-size: cover;
+    height: 100vh;
+
+}
+.hero::after{
+    content: '';
+    background-image: linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0.05));
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+}
+.hero .container-fluid{
+    position: relative;
+    z-index: 1;
+}
+
+.display-4{
+    font-family: Viga;
+    font-weight: 100;
+    font-size:32px;
+}
+.display-4 span{
+    font-weight: bold;
+}
+
+@media (min-width:992px){
+    .display-4{
+        font-size: 52px;
+    }
+}
+.content {
+    position: relative;
+    margin: 80px auto;
+}
+.content img{
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    width: 100%;
+}
+
+.content h4{
+    font-size: 32px;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+.content p{
+    font-size: 15px;
+    font-weight: normal;
+    margin:10px 0 25px;
+}
+
+.content .desc{
+    text-align: center;
+}
+
+@media (min-width:992px){
+
+    .content .desc{
+        text-align: left;
+    }
+}
+
+#writer{
+    position: relative;
+    background-image: url('../../../assets/img/footer.jpg');
+    background-size: cover;
+    color:white !important;
+}
+#writer>.content{
+    position: relative;
+    margin-top: 90px;
+    
+}
+#writter .content{
+    z-index: 2;
+}
+
+.text h4{
+    font-size: 24px;
+    font-weight: 500;
+    color: #2b5876;
+}
+.text h4,.btn{
+    position: relative;
+    z-index: 2;
+}
+#writer::after{
+    content: '';
+    background-image: linear-gradient(to top, rgba(255,255,255,0),rgba(255,255,255,0.96));
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.footer{
+    color: #fff;
+    font-family: Viga;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
