@@ -1,0 +1,19 @@
+.navbar-brand{
+    font-family: Viga;
+}
+@media (min-width:992px){
+    .nav-link{
+        margin-right: 15px;
+        text-transform: uppercase;
+    }
+    .nav-link:hover::after{
+        content:'';
+        border-bottom: 3px solid ghostwhite;
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top:5px;
+        margin-bottom: -8px;
+    }
+
+}

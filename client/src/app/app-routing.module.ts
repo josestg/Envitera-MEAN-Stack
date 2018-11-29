@@ -1,3 +1,5 @@
+import { SinglePostComponent } from './components/single-post/single-post.component';
+
 import { ProfileComponent } from './components/profile/profile.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { NgModule } from '@angular/core';
@@ -25,6 +27,10 @@ const routes: Routes = [
   {
     path:'profile',
     component: ProfileComponent
+  },
+  {
+    path:'detail',
+    component:SinglePostComponent 
   }
 
 ];

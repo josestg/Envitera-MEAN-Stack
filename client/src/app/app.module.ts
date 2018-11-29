@@ -1,3 +1,4 @@
+import { SinglePostComponent } from './components/single-post/single-post.component';
 import { PostsService } from './services/posts.service';
 import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +19,7 @@ import { MustMatchDirective } from './helpers/must-match.directive';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,7 @@ import { MustMatchDirective } from './helpers/must-match.directive';
     ProfileComponent,
     NavbarComponent,
     MustMatchDirective,
+    SinglePostComponent
   
   ],
   imports: [
