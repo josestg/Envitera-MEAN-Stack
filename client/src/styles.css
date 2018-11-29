@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+@font-face{
+    font-family: 'Viga';
+    src:url(./assets/font/Viga.otf);
+}
+.slider{ height: 400px; width: 100%; background-image: url(./assets/img/hero.jpg); background-size: cover; }  
+.no-padding {
+    padding: 0;
+  }
+.bg-grad{
+    /* https://uigradients.com/ */
+    background-image: linear-gradient(to right, #2b5876,#4e4376 )
+}
+
+.btn-grad:hover{
+    border-color: #2b5876 !important;
+}
+
+.btn-grad{
+    color:#2b5876 !important;
+}
+
+.btn-fill-grad{
+    background-color: #2b5876 !important;
+    color:white;
+}
+.btn-fill-grad:hover{
+    color:white;
+    opacity: 0.9;
+}
+.figure-caption{
+    color:#2b5876;
+}
+.figure-caption p{
+    font-size: 12px !important;
+}
+.lead{
+    font-size: 18px;
+}
+
+
+.bg-grad{
+    background-image: linear-gradient(to right, rgba(43,88,118),rgba(78,67,118));
+}

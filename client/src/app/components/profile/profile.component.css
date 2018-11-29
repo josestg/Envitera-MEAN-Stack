@@ -1,0 +1,188 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+
+* {
+  outline: none; 
+}
+
+body {
+  background: ghostwhite;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  color: #67757c;
+  font-weight: 300; 
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  background: #ffffff; 
+}
+
+a:hover, a:focus {
+  text-decoration: none; 
+}
+
+h3 {
+  line-height: 30px;
+  font-size: 21px; 
+  color: #455a64;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400; 
+}
+
+html body .font-bold {
+  font-weight: 700; }
+
+html body .font-normal {
+  font-weight: normal; 
+}
+
+html body .font-light {
+  font-weight: 300; 
+}
+
+html body .font-medium {
+  font-weight: 500; 
+}
+
+a.link {
+  color: #455a64; 
+}
+a.link:hover, a.link:focus {
+    color: #009efb; 
+}
+.radius {
+  border-radius: 4px; 
+}
+
+textarea {
+  resize: none; 
+}
+
+.user-page{
+    position: relative;
+    margin-top: -320px;
+    
+}
+
+.profile-tab li a.nav-link,
+.customtab li a.nav-link {
+  border: 0px;
+  padding: 15px 20px;
+  color: #67757c; 
+}
+.profile-tab li a.nav-link.active,
+.customtab li a.nav-link.active {
+  border-bottom: 2px solid #009efb;
+    color: #009efb; 
+}
+.profile-tab li a.nav-link:hover,
+.customtab li a.nav-link:hover {
+    color: #009efb; 
+}
+
+
+@media (min-width:992px){
+    .user-page{
+        margin-top: -280px;
+        
+    }
+}
+
+a.link {
+    color: #455a64; 
+  }
+  a.link:hover, a.link:focus {
+      color: #009efb; 
+  }
+.profiletimeline {
+    position: relative;
+    margin-left: 70px;
+    margin-right: 10px; 
+  }
+  .profiletimeline .sl-left {
+      float: left;
+      margin-left: -60px;
+      z-index: 1;
+      margin-right: 15px; 
+  }
+  .profiletimeline .sl-left img {
+    max-width: 40px; 
+  }
+  
+  .profiletimeline .sl-item {
+    margin-top: 8px;
+    margin-bottom: 30px; 
+  }
+  
+  .profiletimeline .sl-date {
+    font-size: 12px;
+    color: #99abb4; 
+  }
+  
+  .profiletimeline .time-item {
+    border-color: rgba(120, 130, 140, 0.13);
+    padding-bottom: 1px;
+    position: relative;
+  }
+  .profiletimeline .time-item:before {
+      content: " ";
+      display: table; }
+  .profiletimeline .time-item:after {
+      background-color: #ffffff;
+      border-color: rgba(120, 130, 140, 0.13);
+      border-radius: 10px;
+      border-style: solid;
+      border-width: 2px;
+      bottom: 0;
+      content: '';
+      height: 14px;
+      left: 0;
+      margin-left: -8px;
+      position: absolute;
+      top: 5px;
+      width: 14px; 
+  }
+  
+  .profiletimeline .time-item-item:after {
+    content: " ";
+    display: table; 
+  }
+  
+  .profiletimeline .item-info {
+    margin-bottom: 15px;
+    margin-left: 15px; }
+  .profiletimeline .item-info p {
+      margin-bottom: 10px !important; 
+  }
+  
+  /*Blog widgets*/
+  .blog-widget {
+    margin-top: 30px; 
+  }
+  .blog-widget .blog-image img {
+      border-radius: 4px;
+      margin-top: -45px;
+      margin-bottom: 20px;
+      -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+  }
+  
+  /*little-profile*/
+.little-profile .pro-img {
+    margin-top: -80px;
+    margin-bottom: 20px; 
+  }
+  .little-profile .pro-img img {
+      width: 128px;
+      height: 128px;
+      -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border-radius: 100%; 
+  }
+  
+
+
+

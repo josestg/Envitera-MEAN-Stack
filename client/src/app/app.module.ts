@@ -17,6 +17,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MustMatchDirective } from './helpers/must-match.directive';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { MustMatchDirective } from './helpers/must-match.directive';
     PostsComponent,
     ProfileComponent,
     NavbarComponent,
-    MustMatchDirective
+    MustMatchDirective,
+  
   ],
   imports: [
     BrowserModule,
