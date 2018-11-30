@@ -9,8 +9,8 @@ module.exports = function validatePostInput(data) {
   data.category = !isEmpty(data.category) ? data.category : '';
   data.tags = !isEmpty(data.tags) ? data.tags : '';
 
-  if(!Validator.isLength(data.text,{min:10,max:1200})){
-    errors.text = 'Post must be between 10 and 1200 characters';
+  if(!Validator.isLength(data.text,{min:10,max:300})){
+    errors.text = 'Post must be between 10 and 300 characters';
   }
 
   if (Validator.isEmpty(data.text)) {
