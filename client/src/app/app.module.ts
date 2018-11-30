@@ -20,6 +20,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MustMatchDirective } from './helpers/must-match.directive';
 import { HomeComponent } from './components/home/home.component';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { DevComponent } from './commponents/dev/dev.component';
 
 
 
@@ -34,7 +35,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     NavbarComponent,
     MustMatchDirective,
     SinglePostComponent,
-    HomeComponent
+    HomeComponent,
+    DevComponent
   
   ],
   imports: [

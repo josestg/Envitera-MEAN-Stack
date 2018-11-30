@@ -64,11 +64,11 @@
 
       <div class="col-lg-8">
         <div class="comment-form" *ngIf="_auth.loggedIn()">
-          <form method="post">
+          <form method="post" name="form" (ngSubmit)="f.form.valid && onComment()" #f="ngForm" novalidate>
             <div class="row">
 
               <div class="col-sm-12">
-                <textarea name="contact-form-message" rows="2" class="text-area-messge form-control" placeholder="Enter your comment"
+                   <textarea name="text" [(ngModel)]="model.text" #text="ngModel" [ngClass]="{ 'is-invalid': f.submitted && text.invalid }" required rows="2" class="text-area-messge form-control" placeholder="Enter your comment"
                   aria-required="true" aria-invalid="false"></textarea>
               </div><!-- col-sm-12 -->
               <div class="col-sm-12">

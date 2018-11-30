@@ -9,6 +9,7 @@ export class PostsService {
   private _postsUlr = "http://localhost:3000/api/posts";
   private _likeUrl = "http://localhost:3000/api/posts/like";
   private _postUser = "http://localhost:3000/api/posts/user";
+  private _comment = "http://localhost:3000/api/posts/comment/";
   constructor(private _http:HttpClient) { }
 
   getPosts(){
@@ -28,6 +29,13 @@ export class PostsService {
 
   deletePost(id){
     return this._http.delete<any>(this._postsUlr+'/'+id);
+  }
+
+  addPost(data){
+    return this._http.post(this._postsUlr,data);
+  }
+  addComment(id,data){
+    return this._http.post(this._comment+id,data);
   }
 
 

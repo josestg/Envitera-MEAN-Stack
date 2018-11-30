@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onUpdateUser(){
-    console.log(this.model);
     this._auth.updateProfile(this.model).subscribe(
       res => {console.log(res)
       },
@@ -54,6 +53,14 @@ export class ProfileComponent implements OnInit {
   onDelete(id){
     this._ps.deletePost(id).subscribe(
       res=>{console.log(res)},
+      err=>{console.log(err)}
+    )
+  }
+  onSubmit(){
+    this._ps.addPost(this.model).subscribe(
+      res=>{console.log(res)
+        this._router.navigate(['/posts']);
+      },
       err=>{console.log(err)}
     )
   }

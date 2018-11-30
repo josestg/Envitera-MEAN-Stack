@@ -59,7 +59,8 @@
                       <div class="sl-right">
                         <div class="container-fluid">
                           <div class="float-right">
-                            <button #id value="{{post._id}}" (click) ="onDelete(id.value)"class="btn btn-sm btn-outline-danger"> Delete</button>
+                            <button #id value="{{post._id}}" (click)="onDelete(id.value)" class="btn btn-sm btn-outline-danger">
+                              Delete</button>
                           </div>
                           <a routerLink="/posts/{{post._id}}" class="link">{{profile?.user?.name}}</a> <span class="sl-date ml-2">{{post.date}}</span>
                           <div class="mt-3 row">
@@ -71,8 +72,8 @@
                             </div>
                           </div>
                           <div class="like-comm mt-2">
-                            <a href="javascript:void(0)" class="link mr-3">{{post?.comments?.length}} comments</a> <a href="javascript:void(0)"
-                              class="link mr-3"><i class="fa fa-heart text-danger"></i>
+                            <a href="javascript:void(0)" class="link mr-3">{{post?.comments?.length}} comments</a> <a
+                              href="javascript:void(0)" class="link mr-3"><i class="fa fa-heart text-danger"></i>
                               {{post?.likes?.length}} Love</a>
                           </div>
                         </div>
@@ -85,23 +86,35 @@
               </div>
               <div class="tab-pane" id="addpost" role="tabpanel">
                 <div class="card-body">
-                  <form class="form-horizontal form-material">
+
+                  <form class="form-horizontal form-material" name="form2" (ngSubmit)="f2.form.valid && onSubmit()" #f2="ngForm"
+                    novalidate>
                     <div class="form-group">
                       <label class="col-md-12">Title</label>
                       <div class="col-md-12">
-                        <input type="text" placeholder="Judul Post" class="form-control form-control-line">
+                        <input type="text" class="form-control" name="title" [(ngModel)]="model.title"
+                          #title="ngModel" [ngClass]="{ 'is-invalid': f2.submitted && title.invalid }" required />
+                        <div *ngIf="f2.submitted && title.invalid" class="invalid-feedback">
+                          <div *ngIf="title.errors.required">Title is required</div>
+                        </div>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-md-12">Katgori</label>
                       <div class="col-md-12">
-                        <input type="text" placeholder="Kategori Post" class="form-control form-control-line">
+                          <input type="text" class="form-control" name="category" [(ngModel)]="model.category" #category="ngModel" [ngClass]="{ 'is-invalid': f2.submitted && category.invalid }" required  />
+                          <div *ngIf="f2.submitted && category.invalid" class="invalid-feedback">
+                              <div *ngIf="category.errors.required">category is required</div>
+                          </div>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-md-12">Tags</label>
                       <div class="col-md-12">
-                        <input type="text" placeholder="Tag Post" class="form-control form-control-line">
+                          <input placeholder="tag1,tag2,tag3.. "type="text" class="form-control" name="tags" [(ngModel)]="model.tags" #tags="ngModel" [ngClass]="{ 'is-invalid': f2.submitted && tags.invalid }" required  />
+                          <div *ngIf="f2.submitted && tags.invalid" class="invalid-feedback">
+                              <div *ngIf="tags.errors.required">tags is required</div>
+                          </div>
                       </div>
                     </div>
                     <div class="form-group">
@@ -115,13 +128,16 @@
                     <div class="form-group">
                       <label class="col-md-12">Content</label>
                       <div class="col-md-12">
-                        <textarea rows="5" class="form-control form-control-line"></textarea>
+                        <textarea rows="5" class="form-control form-control-line" name="text" [(ngModel)]="model.text" #text="ngModel" [ngClass]="{ 'is-invalid': f2.submitted && text.invalid }" required ></textarea>
+                        <div *ngIf="f2.submitted && text.invalid" class="invalid-feedback">
+                            <div *ngIf="text.errors.required">text is required</div>
+                        </div>
                       </div>
                     </div>
 
                     <div class="form-group">
                       <div class="col-sm-12">
-                        <button class="btn btn-fill-grad">Send post</button>
+                        <button type="submit" class="btn btn-fill-grad">Send post</button>
                       </div>
                     </div>
                   </form>
@@ -150,48 +166,55 @@
               </div>
               <div class="tab-pane" id="settings" role="tabpanel">
                 <div class="card-body">
-                  <form class="form-horizontal form-material" name="form" (ngSubmit)="f.form.valid && onUpdateUser()" #f="ngForm"  novalidate>
-                      <div class="form-group">
-                          <label class="col-md-12">Full Name</label>
-                          <div class="col-md-12">
-                              <input type="text" placeholder="{{profile?.user?.name}}" class="form-control form-control-line" name="name" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required >
-                              <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
-                                <div *ngIf="name.errors.required">Name is required</div>
-                            </div>
-                          </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-12">Handle</label>
-                        <div class="col-md-12">
-                            <input type="text" placeholder="{{profile?.handle}}" class="form-control form-control-line" name="handle" [(ngModel)]="model.handle" #handle="ngModel" [ngClass]="{ 'is-invalid': f.submitted && handle.invalid }"  >
-                          </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-12">Status</label>
-                        <div class="col-md-12">
-                            <input type="text" placeholder="{{profile?.status}}" class="form-control form-control-line" name="status" [(ngModel)]="model.status" #status="ngModel"  >
+                  <form class="form-horizontal form-material" name="form" (ngSubmit)="f.form.valid && onUpdateUser()"
+                    #f="ngForm" novalidate>
+                    <div class="form-group">
+                      <label class="col-md-12">Full Name</label>
+                      <div class="col-md-12">
+                        <input type="text" placeholder="{{profile?.user?.name}}" class="form-control form-control-line"
+                          name="name" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                          required>
+                        <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                          <div *ngIf="name.errors.required">Name is required</div>
                         </div>
+                      </div>
                     </div>
-              
-                      <div class="form-group">
-                          <label class="col-md-12">Bio</label>
-                          <div class="col-md-12">
-                              <textarea rows="5" class="form-control form-control-line" placeholder="{{profile?.bio}}" name="bio" [(ngModel)]="model.bio" #bio="ngModel"></textarea>
-                          </div>
+                    <div class="form-group">
+                      <label class="col-md-12">Handle</label>
+                      <div class="col-md-12">
+                        <input type="text" placeholder="{{profile?.handle}}" class="form-control form-control-line"
+                          name="handle" [(ngModel)]="model.handle" #handle="ngModel" [ngClass]="{ 'is-invalid': f.submitted && handle.invalid }">
                       </div>
-                      <div class="form-group">
-                        <label class="col-md-12">Location</label>
-                        <div class="col-md-12">
-                            <input type="text" placeholder="{{profile?.user?.location}}" class="form-control form-control-line" name="location" [(ngModel)]="model.location" #location="ngModel">
-                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-12">Status</label>
+                      <div class="col-md-12">
+                        <input type="text" placeholder="{{profile?.status}}" class="form-control form-control-line"
+                          name="status" [(ngModel)]="model.status" #status="ngModel">
                       </div>
-                      <div class="form-group">
-                          <div class="col-sm-12">
-                              <button type="submit" class="btn btn-fill-grad">Update Profile</button>
-                          </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-md-12">Bio</label>
+                      <div class="col-md-12">
+                        <textarea rows="5" class="form-control form-control-line" placeholder="{{profile?.bio}}" name="bio"
+                          [(ngModel)]="model.bio" #bio="ngModel"></textarea>
                       </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-12">Location</label>
+                      <div class="col-md-12">
+                        <input type="text" placeholder="{{profile?.user?.location}}" class="form-control form-control-line"
+                          name="location" [(ngModel)]="model.location" #location="ngModel">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <button type="submit" class="btn btn-fill-grad">Update Profile</button>
+                      </div>
+                    </div>
                   </form>
-              </div>
+                </div>
               </div>
             </div>
           </div>
