@@ -1,5 +1,8 @@
-<h2>Envitera-api</h2>
-Final Project Pengembangan Aplikasi Berbasis Web ITERA
+<h2>Envitera MEAN Stack</h2>
+
+Final Project Pengembangan Aplikasi Berbasis Web ITERA menggunakn database `Mongodb` , *Backend Framework* `Express` untuk membuat *RESTful-API* , Frontend Framework `Angular`untuk membuat *Progresive Web Application (PWA)* dan `nodejs` sebagi *Runtime Environment*. Arsitektur ini juga sering disebut **MEAN-Stack.**
+
+
 
 
 <h2>HTTP requests</h2>
@@ -43,6 +46,8 @@ each route which access is `private` required a `token` string in header.
 | `GET api/profile/all` | Get all profile | Public |
 | `POST api/profile` | Create current user profile | Private |
 | `GET api/profile/user/:user_id` | Get profile by user id | Public |
+
+
 
 
 
